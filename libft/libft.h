@@ -6,7 +6,7 @@
 /*   By: arabenst <arabenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:46:59 by arabenst          #+#    #+#             */
-/*   Updated: 2022/11/23 17:53:45 by arabenst         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:41:39 by arabenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+//get_next_line.c
 char	*get_next_line(int fd);
 void	gnl_strjoin(char **s1, char *s2);
 t_chain	*gnl_get_from_fd(int fd, t_chain **head);
 
+//get_next_line_utils.c
 char	**ft_strmerge(char **dst, char *src, int dstleft);
 char	*ft_uitoa(unsigned int n);
 char	*ft_ultoa_hex(unsigned long n, int lowercase);
