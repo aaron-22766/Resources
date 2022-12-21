@@ -6,37 +6,13 @@
 /*   By: arabenst <arabenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 08:16:32 by arabenst          #+#    #+#             */
-/*   Updated: 2022/11/15 10:21:11 by arabenst         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:54:21 by arabenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_read_to_cache(int fd, char **cache);
-void	ft_make_line(char **cache, char **line);
-void	ft_save_rest(int fd, char **cache, t_chain **head);
-void	ft_clean_chain(t_chain **head);
-
-char	*get_next_line(int fd)
-{
-	static t_chain	*head;
-	char			*cache;
-	char			*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	cache = gnl_get_from_fd(fd, &head)->str;
-	line = NULL;
-	ft_read_to_cache(fd, &cache);
-	ft_make_line(&cache, &line);
-	ft_save_rest(fd, &cache, &head);
-	if (!cache)
-		gnl_get_from_fd(fd, &head)->str = NULL;
-	ft_clean_chain(&head);
-	return (line);
-}
-
-void	ft_read_to_cache(int fd, char **cache)
+static void	ft_read_to_cache(int fd, char **cache)
 {
 	char		*buf;
 	ssize_t		bytes_read;
@@ -60,7 +36,7 @@ void	ft_read_to_cache(int fd, char **cache)
 	free(buf);
 }
 
-void	ft_make_line(char **cache, char **line)
+static void	ft_make_line(char **cache, char **line)
 {
 	int		i;
 
@@ -86,7 +62,7 @@ void	ft_make_line(char **cache, char **line)
 	(*line)[i] = '\0';
 }
 
-void	ft_save_rest(int fd, char **cache, t_chain **head)
+static void	ft_save_rest(int fd, char **cache, t_chain **head)
 {
 	char	*rest;
 	int		i;
@@ -114,7 +90,7 @@ void	ft_save_rest(int fd, char **cache, t_chain **head)
 	gnl_get_from_fd(fd, head)->str = rest;
 }
 
-void	ft_clean_chain(t_chain **head)
+static void	ft_clean_chain(t_chain **head)
 {
 	t_chain	*current;
 	t_chain	*prev;
@@ -138,4 +114,23 @@ void	ft_clean_chain(t_chain **head)
 			prev = current;
 		current = temp;
 	}
+}
+
+char	*get_next_line(int fd)
+{
+	static t_chain	*head;
+	char			*cache;
+	char			*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	cache = gnl_get_from_fd(fd, &head)->str;
+	line = NULL;
+	ft_read_to_cache(fd, &cache);
+	ft_make_line(&cache, &line);
+	ft_save_rest(fd, &cache, &head);
+	if (!cache)
+		gnl_get_from_fd(fd, &head)->str = NULL;
+	ft_clean_chain(&head);
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: arabenst <arabenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 08:27:34 by arabenst          #+#    #+#             */
-/*   Updated: 2022/11/15 10:19:42 by arabenst         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:53:56 by arabenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	gnl_strjoin(char **s1, char *s2)
 	*s1 = joined;
 }
 
-t_chain	*gnl_lstadd_back(t_chain **lst, int fd)
+static t_chain	*gnl_lstadd_back(t_chain **lst, int fd)
 {
 	t_chain	*temp;
 	t_chain	*new;
