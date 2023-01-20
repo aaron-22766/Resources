@@ -1,0 +1,24 @@
+{
+    "workbench.panel.defaultLocation": "right",
+    "files.autoSaveDelay": 1,
+    "files.autoSave": "afterDelay",
+    "editor.tabCompletion": "off",
+    "editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.detectIndentation": false,
+	"editor.wordWrap": "on",
+	"C_Cpp.errorSquiggles": "Disabled",
+	"files.associations": {
+		"stdlib.h": "c",
+		"get_next_line_bonus.h": "c",
+		"get_next_line.h": "c",
+		"libft.h": "c",
+		"ft_printf.h": "c",
+		"ft_printf_bonus.h": "c",
+		"mlx42.h": "c",
+		"memory.h": "c"
+	},
+	"editor.suggestSelection": "recentlyUsed",
+	"editor.inlineSuggest.enabled": true,
+	"norminette.command": "norminette"
+}
