@@ -20,5 +20,6 @@
 	},
 	"editor.suggestSelection": "recentlyUsed",
 	"editor.inlineSuggest.enabled": true,
-	"norminette.command": "norminette"
+	"norminette.command": "norminette",
+	"editor.parameterHints.enabled": false
 }
