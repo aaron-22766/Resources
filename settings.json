@@ -21,5 +21,5 @@
 	"editor.suggestSelection": "recentlyUsed",
 	"editor.inlineSuggest.enabled": true,
 	"norminette.command": "norminette",
-	"editor.parameterHints.enabled": false
+	"editor.parameterHints.enabled": true
 }
