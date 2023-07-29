@@ -1,0 +1,42 @@
+{
+    "makefile": {
+        "prefix": "makefile",
+        "body": [
+          "NAME\t\t:=\ta.out",
+          "",
+          "INCDIR\t\t:=\t./include",
+          "SRCDIR\t\t:=\t./src",
+          "OBJDIR\t\t:=\t./obj",
+          "",
+          "INCS\t\t:=\t$(wildcard $(INCDIR)/*.hpp)",
+          "SRCS\t\t:=\t$(wildcard $(SRCDIR)/*.cpp)",
+          "OBJS\t\t:=\t$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.cpp=.o)))",
+          "",
+          "CC\t\t\t:=\tc++",
+          "CPPFLAGS\t:=\t-Wall -Werror -Wextra -std=c++98",
+          "",
+          "RM\t\t\t:=\trm",
+          "RMFLAGS\t\t:=\t-rf",
+          "",
+          "$(NAME): $(OBJS) | $(INCS)",
+          "\t$(CC) -o $@ $^",
+          "",
+          "$(OBJDIR)/%.o: $(SRCDIR)/%.cpp",
+          "\tmkdir -p $(@D)",
+          "\t$(CC) -c -o $@ $< $(CPPFLAGS)",
+          "",
+          "all: $(NAME)",
+          "",
+          "clean:",
+          "\t$(RM) $(RMFLAGS) $(OBJDIR)",
+          "",
+          "fclean: clean",
+          "\t$(RM) $(RMFLAGS) $(NAME)",
+          "",
+          "re: fclean all",
+          "",
+          ".PHONY: all clean fclean re"
+        ],
+        "description": ""
+    }
+}
